@@ -1,0 +1,6 @@
+:root{
+  --bg:#0d0b14;--panel:#1a1633;--ink:#f4efe1;--muted:#a59fc4;
+  --pink:#ff2e88;--cyan:#2ee6ff;--yellow:#ffd23f;--ok:#4ade80;--err:#ff6b6b;
+  --font-title:Impact,"Arial Black",sans-serif;
+  --font-body:"Courier New",monospace;
+}
