@@ -1,11 +1,9 @@
 :root{
-  --bg:#0b0a14;
-  --panel:#15132a;
+  --black:#0d0b14;
+  --ink:#14101c;
   --pink:#ff2e88;
   --cyan:#2ee6ff;
   --yellow:#ffd23f;
-  --text:#f2eefc;
-  --muted:#9a94b8;
-  --display:"Bebas Neue",Impact,sans-serif;
-  --body:"Space Grotesk",system-ui,sans-serif
+  --paper:#e9e1ca;
+  --muted:#a9a0ad
 }
