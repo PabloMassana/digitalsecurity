@@ -7,6 +7,54 @@
     <link rel="stylesheet" href="Catalogo.css">
 </head>
 <body>
+    <div class="app">
+        <header>
+            <a class="logo" href="Home.html">
+                <h2>Videoclub Nocturno</h2>
+            </a>
+            <nav>
+                <a href="Home.html">Inicio</a>
+                <a href="Catalogo.html">Catálogo</a>
+                <a href="Lista.html">Lista</a>
+            </nav>
+        </header>
 
+        <main class="catalog-page">
+            <section class ="page-title">
+                <!-- informacion -->
+                <p>Pasillo 02 — Rebobina y elige</p>
+                <h1>El catálogo</h1>
+                <!-- Ira x cant de cintas cuando ya se tenga la bd -->
+                <p>Cintas esperando una noche libre.</p>
+            </section>
+
+            <section class="filter-bar">
+                <!-- para filtros de busqueda -->
+                <label class="search-box">
+                    <span class="filter-label">BUSCAR</span>
+                    <input type="search" placeholder="Buscar título o género..." disabled>
+                </label>
+                <div class = "filter-group">
+                    <p>DECADA</p>
+                    <button type="button" disabled>Todas</button>
+                    <button type="button" disabled>70s</button>
+                    <button type="button" disabled>80s</button>
+                    <button type="button" disabled>90s</button>
+                </div>
+                <label class="select-wrap">
+                    <span>GÉNERO</span>
+                    <select disabled>
+                        <option value="">Todos</option>
+                        <option value="accion">Acción</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="drama">Drama</option>
+                        <option value="terror">Terror</option>
+                    </select>
+                </label>
+            </section>
+
+            
+        </main>    
+    </div>
 </body>
 </html>
