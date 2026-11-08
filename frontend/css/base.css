@@ -1,0 +1,87 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--black);
+  color:#f5eee6;
+  font-family:"Special Elite",monospace
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{
+  color:inherit;
+  text-decoration:none
+}
+::selection{
+  color:var(--black);
+  background:var(--cyan)
+}
+.app{
+  min-height:100vh;
+  overflow:hidden;
+  position:relative;
+  background:radial-gradient(circle at 50% -20%,#2b1231 0,var(--black) 46%)
+}
+.app::after{
+  content:"";
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:99;
+  box-shadow:inset 0 0 12vw #000
+}
+.noise-filter{
+  position:absolute;
+  width:0;
+  height:0
+}
+.grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:98;
+  opacity:.1;
+  filter:url(#noise);
+  background:#fff;
+  mix-blend-mode:soft-light
+}
+.crt-on::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:97;
+  pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.22) 3px 5px);
+  opacity:.48
+}
+.tracking{
+  animation:tracking .4s steps(2)
+}
+@keyframes tracking{
+  0%{
+    filter:hue-rotate(0);
+    transform:translate(0)
+  }
+  20%{
+    filter:hue-rotate(70deg);
+    transform:translate(5px,-2px) skewX(1deg)
+  }
+  40%{
+    transform:translate(-7px,2px)
+  }
+  70%{
+    filter:saturate(2);
+    transform:translate(3px)
+  }
+  100%{
+    transform:translate(0)
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto
+  }
+  .hero h1 strong,.tracking{
+    animation:none
+  }
+}
