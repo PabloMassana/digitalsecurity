@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Videoclub Nocturno — Inicia sesión</title>
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="app crt-on">
+    <svg class="noise-filter" aria-hidden="true">
+      <filter id="auth-noise">
+        <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+    </svg>
+    <div class="grain"></div>
+
+    <div class="auth-marquee" aria-hidden="true">
+      <div>
+        <span>SESIÓN NOCTURNA</span><span>◆</span><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
+        <span>SESIÓN NOCTURNA</span><span>◆</span><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
+      </div>
+    </div>
+
+    <main class="auth-shell">
+      <!-- Lado arte -->
+      <section class="auth-art">
+        <div class="auth-art-image"></div>
+        <div class="auth-brand">
+          <p class="eyebrow">Club privado de cine</p>
+          <div class="auth-logo">
+            <span>VIDEOCLUB</span>
+            <strong>NOCTURNO</strong>
+          </div>
+          <p class="auth-claim">Tu próxima obsesión está detrás de esta puerta.</p>
+        </div>
+        <div class="auth-sticker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 6-8 6 8 6V6Zm10 0-8 6 8 6V6Z" /></svg>
+          <span>BE KIND<b>REWIND</b></span>
+        </div>
+        <div class="auth-tape-label"><span>MEMBER TAPE</span><b>VN—1989</b></div>
+      </section>
+
+      <!-- Panel de acceso -->
+      <section class="auth-panel">
+        <div class="auth-panel-top">
+          <span>ACCESO</span>
+          <button class="auth-crt-toggle on" type="button" aria-pressed="true">
+            <span class="toggle-light" aria-hidden="true"></span>
+            <span class="toggle-label">CRT ON</span>
+          </button>
+        </div>
+
+        <div class="auth-form-wrap">
+          <div class="auth-status"><span class="status-light"></span>SISTEMA EN LÍNEA</div>
+          <p class="eyebrow">Bienvenido de nuevo</p>
+          <h1>Inicia sesión</h1>
+          <p class="auth-intro">Identifícate para cruzar la cortina y volver a tus estanterías.</p>
+
+          <nav class="auth-tabs" aria-label="Tipo de acceso">
+            <a href="/login" class="active" aria-current="page">Ya soy miembro</a>
+            <!-- para cuando este registro -->
+            <a href="">Quiero registrarme</a>
+          </nav>
+
+          <!-- Conecta con tu backend: cambia action y method según tu API -->
+          <form class="auth-form" action="/login" method="post">
+            <label>
+              <span>Correo electrónico</span>
+              <input type="email" name="email" placeholder="socio@nocturno.club" autocomplete="email" required />
+            </label>
+
+            <label>
+              <span>Contraseña</span>
+              <input type="password" name="password" placeholder="••••••••" autocomplete="current-password" minlength="6" required />
+            </label>
+
+            <div class="auth-options">
+              <label class="remember-check">
+                <input type="checkbox" name="remember" />
+                <span>Recordar mi número de socio</span>
+              </label>
+            </div>
+
+            <!-- Mensaje de error del backend: quita el atributo hidden para mostrarlo -->
+            <p class="auth-error" role="alert" hidden></p>
+
+            <button class="auth-submit" type="submit">
+              <span>Entrar al videoclub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </button>
+          </form>
+
+          <p class="auth-switch">
+            <span>¿Todavía no tienes carnet?</span>
+            <a href="register.html">Regístrate aquí</a>
+          </p>
+        </div>
+
+        <div class="auth-panel-footer">
+          <span>NO SE REQUIERE TARJETA</span>
+          <span>EST. 1989</span>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/crt.js"></script>
+</body>
+</html>
