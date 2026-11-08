@@ -186,7 +186,7 @@ nav a[aria-current="page"]::after {
 }
 
 .filter-label,
-.filter-group > span,
+.filter-group > p,
 .select-wrap > span {
     display: block;
     margin-bottom: 9px;
@@ -213,6 +213,14 @@ nav a[aria-current="page"]::after {
     color: #99919a;
     font: inherit;
     font-size: 11px;
+    cursor: pointer;
+}
+
+.filter-group button:hover,
+.filter-group button[aria-pressed="true"] {
+    border-color: var(--pink);
+    color: #fff;
+    background: #351327;
 }
 
 .filter-bar :disabled {
@@ -234,6 +242,11 @@ nav a[aria-current="page"]::after {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 58px 28px;
+}
+
+.empty-results {
+    padding: 20px 0;
+    color: var(--muted);
 }
 
 .movie-card {
@@ -358,6 +371,11 @@ nav a[aria-current="page"]::after {
     letter-spacing: normal;
     line-height: 1.6;
     text-transform: none;
+}
+
+.card-info .movie-meta {
+    color: var(--yellow);
+    font-size: 10px;
 }
 
 footer {

@@ -1,21 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tu lista personal de películas del Videoclub Nocturno.">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Tu lista personal de películas del Videoclub Nocturno."
+    />
     <title>Mi lista | Videoclub Nocturno</title>
-    <link rel="stylesheet" href="Lista.css">
-    </head>
+    <link rel="stylesheet" href="Lista.css" />
+  </head>
 
-    <body>
-        <div class="app">
+  <body>
+    <div class="app">
+      <header class="site-header">
+        <a
+          class="logo"
+          href="/"
+          aria-label="Videoclub Nocturno, catálogo"
+        >
+          <span>VIDEOCLUB</span>
+          <strong>NOCTURNO</strong>
+        </a>
+        <nav aria-label="Navegación principal">
+                <a href="/" class="active">Inicio</a>
+                <a href="/catalogo">Catálogo</a>
+                <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
+            </nav>
+      </header>
 
-            <footer>
-            <div class="footer-logo">VN</div>
-            <p>POR FAVOR, SÉ AMABLE.<br><b>REBOBINA.</b></p>
-            <span>© 1989—2026<br>ABIERTO TODAS LAS NOCHES</span>
-        </footer>
-        </div>"
-    </body>
+      <main class="page list-page">
+        <section class="page-title" aria-labelledby="list-title">
+                <p class="eyebrow">Tu estantería personal</p>
+                <h1 id="list-title">Mi lista</h1>
+                <p>Las cintas que no quieres devolver todavía.</p>
+            </section>
+
+            <section class="empty tape-empty" aria-labelledby="empty-title">
+                <div class="tape-illustration" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                </div>
+                <h2 id="empty-title">Tu estantería está vacía</h2>
+                <p>Explora el catálogo y guarda tus próximas sesiones nocturnas.</p>
+                <a class="primary-button" href="/Catalogo">Buscar una película</a>
+            </section>
+        </main>
+      </main>
+
+      <footer>
+        <div class="footer-logo">VN</div>
+        <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
+        <span>© 1989—2026<br />ABIERTO TODAS LAS NOCHES</span>
+      </footer>
+    </div>
+    "
+  </body>
 </html>
