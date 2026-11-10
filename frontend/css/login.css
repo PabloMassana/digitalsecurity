@@ -97,15 +97,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .auth-sticker span { display: flex; flex-direction: column; }
 .auth-sticker b { font-family: var(--display); font-size: 1.6rem; font-weight: 400; letter-spacing: .08em; }
 
-.auth-tape-label {
-  position: absolute; left: 1.5rem; top: 1.5rem;
-  background: var(--ink); color: #12000a; padding: .3rem .7rem;
-  display: flex; gap: .7rem; align-items: baseline;
-  font-family: var(--mono); font-size: 1.15rem; transform: rotate(-3deg);
-  border-left: 6px solid var(--cyan);
-}
-.auth-tape-label b { font-family: var(--display); font-weight: 400; font-size: 1.4rem; }
-
 /* ---------- Panel ---------- */
 .auth-panel {
   background: var(--panel); border-left: 2px solid var(--pink);
