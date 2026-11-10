@@ -43,7 +43,7 @@ nav a{
     position:relative;
     color:#9f98a4;
     text-transform:uppercase;
-    font-size:12px;
+    font-size: clamp(12px, 3vw, 14px);
     letter-spacing:.16em
 }
 nav a:hover,nav a.active{
@@ -66,15 +66,15 @@ nav a.active::after{
     color:#aaa;
     border:1px solid #3c3544;
     background:#18141e;
-    padding:9px 13px;
-    font-size:10px;
+    padding:clamp(9px, 2.2vw, 12px) clamp(12px, 3vw, 16px);
+    font-size: clamp(10px, 2.8vw, 13px);
     letter-spacing:.1em;
     box-shadow:inset 0 0 8px #000
 }
 .toggle-light{
     display:inline-block;
-    width:7px;
-    height:7px;
+    width:clamp(7px, 1.8vw, 9px);
+    height:clamp(7px, 1.8vw, 9px);
     margin-right:8px;
     border-radius:50%;
     background:#665f68
@@ -169,6 +169,13 @@ footer>span{
         padding:0 4vw;
         gap:14px}nav{gap:15px}nav a{font-size:9px}.crt-toggle{padding:8px 10px}
     }
+    nav a {
+        font-size: clamp(14px, 3vw, 15px);
+    }
+    .crt-toggle{
+        font-size: 12px;
+        padding: 10px 14px;
+    }
 @media(max-width:600px){
     .site-header{
         height:auto;
@@ -184,6 +191,13 @@ footer>span{
         height:45px;
         justify-content:space-around
     }
+    nav a{
+        font-size: clamp(13px, 3.5vw, 16px);
+    }
+    .crt-toggle{
+        font-size: 12px;
+        padding: 10px 14px;
+    }
     .meta{
         flex-wrap:wrap;
         gap:10px
@@ -193,4 +207,18 @@ footer>span{
         flex-direction:column;
         text-align:center
     }
-    footer>span{text-align:center}}
+    footer>span{text-align:center}
+}
+@media (min-width: 1000px) and (max-width: 1100px){
+    nav a{
+        font-size: 19px;
+    }
+    .crt-toggle{
+        font-size: 15px;
+        padding: 12px 17px;
+    }
+    .toggle-light{
+        width: 10px;
+        height: 10px;
+    }
+}
