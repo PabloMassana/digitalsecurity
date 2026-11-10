@@ -22,7 +22,7 @@
                 <a href="/catalogo">Catálogo</a>
                 <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
             </nav>
-            <button class="crt-toggle on" onclick="toggleCRT(this)"><span class="toggle-light"></span> CRT ON</button>
+            <button class="crt-toggle on" type="button" aria-pressed="true"><span class="toggle-light" aria-hidden="true"></span><span class="toggle-label">CRT ON</span></button>
         </header>
         <main>
             <section class="hero">
@@ -67,23 +67,7 @@
     </div>
 
     <script src="js/data.js"></script>
-    <script>
-        let i=0;
-        const pad=(n,l)=>String(n).padStart(l,"0"),$=id=>document.getElementById(id);
-        function render(){
-        const m=movies[i];
-            $("art").style.backgroundImage="url("+m.image+")";
-            $("year").textContent=m.year;
-            $("num").textContent="Nº "+pad(m.id,3)+" — NUEVO INGRESO";
-            $("title").textContent=m.title;$("tagline").textContent=m.tagline;
-            $("meta").innerHTML=[m.genre,m.runtime,m.rating].map(x=>"<span>"+x+"</span>").join("");
-            $("synopsis").textContent=m.synopsis;
-            $("link").href="/detalle?id="+m.id;
-            $("counter").textContent=pad(i+1,2)+" / "+pad(movies.length,2);
-        }
-        $("prev").onclick=()=>{i=(i+movies.length-1)%movies.length;render()};
-        $("next").onclick=()=>{i=(i+1)%movies.length;render()};
-        render();updateListCount();
-    </script>
+    <script src="js/home.js"></script>
+    <script src="js/crt.js"></script>
 </body>
 </html>

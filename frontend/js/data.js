@@ -26,8 +26,3 @@ function updateListCount(){
     const el=document.getElementById("list-count");
     if(el) el.textContent=getFavs().length; 
 }
-function toggleCRT(btn){
-  const on=document.querySelector(".app").classList.toggle("crt-on");
-  btn.classList.toggle("on",on);
-  btn.lastChild.textContent=" CRT "+(on?"ON":"OFF");
-}
