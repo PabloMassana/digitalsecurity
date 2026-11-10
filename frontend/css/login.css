@@ -177,10 +177,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .auth-form input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(46, 230, 255, .2); }
 .auth-form input:user-invalid { border-bottom-color: var(--pink); }
 
-.remember-check { display: flex; gap: .6rem; align-items: flex-start; }
-.remember-check input { accent-color: var(--pink); width: 16px; height: 16px; margin-top: .2rem; flex: none; }
-.remember-check span { font-family: var(--body) !important; font-size: .9rem !important; letter-spacing: 0 !important; margin: 0 !important; color: var(--muted) !important; }
-
 .auth-options { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .auth-options a, .auth-switch a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; font-size: .9rem; }
 
