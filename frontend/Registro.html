@@ -1,107 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Videoclub Nocturno — Hazte miembro</title>
-  <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/Registro.css" />
-</head>
-<body>
-  <div class="app">
-    <svg class="noise-filter" aria-hidden="true">
-      <filter id="auth-noise">
-        <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-    </svg>
-    <div class="grain"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Videoclub Nocturno — Hazte miembro</title>
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/Registro.css" />
+  </head>
+  <body>
+    <div class="app">
+      <svg class="noise-filter" aria-hidden="true">
+        <filter id="auth-noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency=".85"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </svg>
+      <div class="grain"></div>
 
-    <div class="auth-marquee" aria-hidden="true">
-      <div>
-        <span>SESIÓN NOCTURNA</span><span>◆</span><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
-        <span>SESIÓN NOCTURNA</span><span>◆</span><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
+      <div class="auth-marquee" aria-hidden="true">
+        <div>
+          <span>SESIÓN NOCTURNA</span><span>◆</span
+          ><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span
+          ><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
+          <span>SESIÓN NOCTURNA</span><span>◆</span
+          ><span>MEMBRESÍA VIDEOCLUB</span><span>◆</span
+          ><span>ABIERTO HASTA EL AMANECER</span><span>◆</span>
+        </div>
       </div>
-    </div>
 
-    <main class="auth-shell">
-      <!-- Lado arte -->
-      <section class="auth-art">
-        <div class="auth-art-image"></div>
-        <div class="auth-brand">
-          <p class="eyebrow">Club privado de cine</p>
-          <div class="auth-logo">
-            <span>VIDEOCLUB</span>
-            <strong>NOCTURNO</strong>
+      <main class="auth-shell">
+        <!-- Lado arte -->
+        <section class="auth-art">
+          <div class="auth-art-image"></div>
+          <div class="auth-brand">
+            <p class="eyebrow">Club privado de cine</p>
+            <div class="auth-logo">
+              <span>VIDEOCLUB</span>
+              <strong>NOCTURNO</strong>
+            </div>
+            <p class="auth-claim">
+              Tu próxima obsesión está detrás de esta puerta.
+            </p>
           </div>
-          <p class="auth-claim">Tu próxima obsesión está detrás de esta puerta.</p>
-        </div>
-        <div class="auth-sticker">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 6-8 6 8 6V6Zm10 0-8 6 8 6V6Z" /></svg>
-          <span>BE KIND<b>REWIND</b></span>
-        </div>
-      </section>
+          <div class="auth-sticker">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m11 6-8 6 8 6V6Zm10 0-8 6 8 6V6Z" />
+            </svg>
+            <span>BE KIND<b>REWIND</b></span>
+          </div>
+        </section>
 
-      <!-- Panel de acceso -->
-      <section class="auth-panel">
-        <div class="auth-panel-top">
-          <span>ACCESO / MOSTRADOR 01</span>
-        </div>
+        <!-- Panel de acceso -->
+        <section class="auth-panel">
+          <div class="auth-panel-top">
+            <span>ACCESO / MOSTRADOR 01</span>
+          </div>
 
-        <div class="auth-form-wrap">
-          <div class="auth-status"><span class="status-light"></span>SISTEMA EN LÍNEA</div>
-          <p class="eyebrow">Alta de socio</p>
-          <h1>Hazte miembro</h1>
-          <p class="auth-intro">Completa tu ficha y consigue acceso inmediato a nuestro archivo nocturno.</p>
+          <div class="auth-form-wrap">
+            <div class="auth-status">
+              <span class="status-light"></span>SISTEMA EN LÍNEA
+            </div>
+            <p class="eyebrow">Alta de socio</p>
+            <h1>Hazte miembro</h1>
+            <p class="auth-intro">
+              Completa tu ficha y consigue acceso inmediato a nuestro archivo
+              nocturno.
+            </p>
 
-          <nav class="auth-tabs" aria-label="Tipo de acceso">
-            <a href="/login">Ya soy miembro</a>
-            <a href="/registro" class="active" aria-current="page">Quiero registrarme</a>
-          </nav>
+            <nav class="auth-tabs" aria-label="Tipo de acceso">
+              <a href="/login">Ya soy miembro</a>
+              <a href="/registro" class="active" aria-current="page"
+                >Quiero registrarme</a
+              >
+            </nav>
 
-          <!-- Conecta con tu backend: cambia action y method según tu API -->
-          <form class="auth-form" action="/registro" method="post">
-            <label>
-              <span>Nombre de socio</span>
-              <input type="text" name="name" placeholder="¿Cómo te llamamos?" autocomplete="name" required />
-            </label>
+            <!-- Conecta con tu backend: cambia action y method según tu API -->
+            <form class="auth-form" action="/registro" method="post">
+              <label>
+                <span>Nombre de socio</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="¿Cómo te llamamos?"
+                  autocomplete="name"
+                  required
+                />
+              </label>
 
-            <label>
-              <span>Correo electrónico</span>
-              <input type="email" name="email" placeholder="socio@nocturno.club" autocomplete="email" required />
-            </label>
+              <label>
+                <span>Correo electrónico</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="socio@nocturno.club"
+                  autocomplete="email"
+                  required
+                />
+              </label>
 
-            <label>
-              <span>Contraseña</span>
-              <input type="password" name="password" placeholder="••••••••" autocomplete="new-password" minlength="6" required />
-            </label>
+              <label>
+                <span>Contraseña</span>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="••••••••"
+                  autocomplete="new-password"
+                  minlength="6"
+                  required
+                />
+              </label>
 
-            <label class="terms-check">
-              <input type="checkbox" name="terms" required />
-              <span>Acepto devolver las cintas rebobinadas y cuidar la colección.</span>
-            </label>
+              <label class="terms-check">
+                <input type="checkbox" name="terms" required />
+                <span
+                  >Acepto devolver las cintas rebobinadas y cuidar la
+                  colección.</span
+                >
+              </label>
 
-            <!-- Mensaje de error del backend: quita el atributo hidden para mostrarlo -->
-            <p class="auth-error" role="alert" hidden></p>
+              <!-- Mensaje de error del backend: quita el atributo hidden para mostrarlo -->
+              <p class="auth-error" role="alert" hidden></p>
 
-            <button class="auth-submit" type="submit">
-              <span>Crear mi membresía</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-            </button>
-          </form>
+              <button class="auth-submit" type="submit">
+                <span>Crear mi membresía</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </form>
 
-          <p class="auth-switch">
-            <span>¿Ya tienes tu carnet?</span>
-            <a href="/login">Inicia sesión</a>
-          </p>
-        </div>
+            <p class="auth-switch">
+              <span>¿Ya tienes tu carnet?</span>
+              <a href="/login">Inicia sesión</a>
+            </p>
+          </div>
 
-        <div class="auth-panel-footer">
-          <span>NO SE REQUIERE TARJETA</span>
-          <span>EST. 1989</span>
-        </div>
-      </section>
-    </main>
-  </div>  
-</body>
+          <div class="auth-panel-footer">
+            <span>NO SE REQUIERE TARJETA</span>
+            <span>EST. 1989</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

@@ -1,100 +1,128 @@
 <!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explora el catálogo del Videoclub Nocturno.">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explora el catálogo del Videoclub Nocturno."
+    />
     <title>Catálogo | Videoclub Nocturno</title>
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/Catalogo.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="app">
-        <header class="site-header">
-            <a class="logo" href="/" aria-label="Videoclub Nocturno, catálogo">
-                <span>VIDEOCLUB</span>
-                <strong>NOCTURNO</strong>
-            </a>
-            <nav aria-label="Navegación principal">
-                <a href="/">Inicio</a>
-                <a href="/catalogo" aria-current="page">Catálogo</a>
-                <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
-            </nav>
-        </header>
+      <header class="site-header">
+        <a class="logo" href="/" aria-label="Videoclub Nocturno, catálogo">
+          <span>VIDEOCLUB</span>
+          <strong>NOCTURNO</strong>
+        </a>
+        <nav aria-label="Navegación principal">
+          <a href="/">Inicio</a>
+          <a href="/catalogo" aria-current="page">Catálogo</a>
+          <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
+        </nav>
+      </header>
 
-        <main class="page catalog-page">
-            <section class="page-title" aria-labelledby="catalog-title">
-                <p class="eyebrow">Pasillo 02 — Rebobina y elige</p>
-                <h1 id="catalog-title">El catálogo</h1>
-                <p id="movie-count" aria-live="polite">Cintas esperando una noche libre.</p>
-            </section>
+      <main class="page catalog-page">
+        <section class="page-title" aria-labelledby="catalog-title">
+          <p class="eyebrow">Pasillo 02 — Rebobina y elige</p>
+          <h1 id="catalog-title">El catálogo</h1>
+          <p id="movie-count" aria-live="polite">
+            Cintas esperando una noche libre.
+          </p>
+        </section>
 
-            <section class="filter-bar" aria-label="Filtros del catálogo">
-                <label class="search-box">
-                    <span class="filter-label">BUSCAR</span>
-                    <input id="movie-search" type="search" placeholder="Buscar título o género..." />
-                </label>
-                <div class="filter-group">
-                    <p>DECADA</p>
-                    <button type="button" data-decade="all" aria-pressed="true">Todas</button>
-                    <button type="button" data-decade="1970" aria-pressed="false">70s</button>
-                    <button type="button" data-decade="1980" aria-pressed="false">80s</button>
-                    <button type="button" data-decade="1990" aria-pressed="false">90s</button>
-                </div>
-                <label class="select-wrap">
-                    <span>GÉNERO</span>
-                    <select id="genre-filter">
-                        <option value="">Todos</option>
-                    </select>
-                </label>
-            </section>
-
-            <section id="movie-grid" class="movie-grid" aria-label="Películas disponibles">
-                <template id="movie-card-template">
-                    <article class="movie-card">
-                        <div class="vhs-sleeve">
-                            <div class="tape" aria-hidden="true">
-                                <span class="reel"></span>
-                                <b>Video Home System</b>
-                                <span class="reel"></span>
-                            </div>
-                            <div class="card-art">
-                                <p class="year-stamp"></p>
-                                <div>
-                                    <h2></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <div>
-                                <p class="card-tagline"></p>
-                                <h3 class="card-title"></h3>
-                                <p class="movie-meta"></p>
-                                <p class="card-synopsis"></p>
-                            </div>
-                        </div>
-                    </article>
-                </template>
-            </section>
-            <p id="empty-results" class="empty-results" hidden>No hay películas que coincidan con los filtros.</p>
-        </main>
-
-        <div class="acciones-pelicula">
-            <button class="btn-lista" type="button" data-id="123" data-titulo="Nombre de la película" aria-pressed="false">
-            <span class="btn-lista__texto">Agregar pelicula</span>
+        <section class="filter-bar" aria-label="Filtros del catálogo">
+          <label class="search-box">
+            <span class="filter-label">BUSCAR</span>
+            <input
+              id="movie-search"
+              type="search"
+              placeholder="Buscar título o género..."
+            />
+          </label>
+          <div class="filter-group">
+            <p>DECADA</p>
+            <button type="button" data-decade="all" aria-pressed="true">
+              Todas
             </button>
-        </div>
+            <button type="button" data-decade="1970" aria-pressed="false">
+              70s
+            </button>
+            <button type="button" data-decade="1980" aria-pressed="false">
+              80s
+            </button>
+            <button type="button" data-decade="1990" aria-pressed="false">
+              90s
+            </button>
+          </div>
+          <label class="select-wrap">
+            <span>GÉNERO</span>
+            <select id="genre-filter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+        </section>
 
-        <footer>
-            <!-- VN =videoculb nocturo -->
-            <div class="footer-logo">VN</div>
-            <p>POR FAVOR, SÉ AMABLE.<br><b>REBOBINA.</b></p>
-            <span>© 1989—2026<br>ABIERTO TODAS LAS NOCHES</span>
+        <section
+          id="movie-grid"
+          class="movie-grid"
+          aria-label="Películas disponibles"
+        >
+          <template id="movie-card-template">
+            <article class="movie-card">
+              <div class="vhs-sleeve">
+                <div class="tape" aria-hidden="true">
+                  <span class="reel"></span>
+                  <b>Video Home System</b>
+                  <span class="reel"></span>
+                </div>
+                <div class="card-art">
+                  <p class="year-stamp"></p>
+                  <div>
+                    <h2></h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-info">
+                <div>
+                  <p class="card-tagline"></p>
+                  <h3 class="card-title"></h3>
+                  <p class="movie-meta"></p>
+                  <p class="card-synopsis"></p>
+                </div>
+              </div>
+            </article>
+          </template>
+        </section>
+        <p id="empty-results" class="empty-results" hidden>
+          No hay películas que coincidan con los filtros.
+        </p>
+      </main>
 
-        </footer>
+      <div class="acciones-pelicula">
+        <button
+          class="btn-lista"
+          type="button"
+          data-id="123"
+          data-titulo="Nombre de la película"
+          aria-pressed="false"
+        >
+          <span class="btn-lista__texto">Agregar pelicula</span>
+        </button>
+      </div>
+
+      <footer>
+        <!-- VN =videoculb nocturo -->
+        <div class="footer-logo">VN</div>
+        <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
+        <span>© 1989—2026<br />ABIERTO TODAS LAS NOCHES</span>
+      </footer>
     </div>
     <script src="frontend/js/data.js"></script>
     <script src="frontend/js/catalog-page.js"></script>
-</body>
+  </body>
 </html>
