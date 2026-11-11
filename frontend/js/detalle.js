@@ -17,7 +17,11 @@ document.getElementById("layout").innerHTML = `
                 <p class="synopsis">${m.synopsis}</p>
                 <h3>Reparto principal</h3>
                 <div class="cast">${m.cast.map((p) => "<span>" + p + "</span>").join("")}</div>
-                <button class="favorite-button" id="fav"></button>
+                <div class="detail-actions">
+                  <button class="favorite-button" id="fav"></button>
+                  <button class="action-button action-edit" type="button" data-id="${m.id}" data-titulo="${m.title}">Modificar</button>
+                  <button class="action-button action-delete" type="button" data-id="${m.id}" data-titulo="${m.title}">Eliminar</button>
+                </div>
             </div>
             <div class="ticket">
                 <div class="ticket-top"><span>VIDEOCLUB NOCTURNO</span><b>ADMIT ONE</b></div>

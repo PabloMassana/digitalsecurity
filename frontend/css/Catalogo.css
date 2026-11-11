@@ -414,6 +414,72 @@ footer > span {
     line-height: 1.8;
 }
 
+.acciones-pelicula {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 32px 0;      /* espacio arriba y abajo */
+  padding: 0 16px;     /* evita que pegue a los bordes en móvil */
+  box-sizing: border-box;
+}
+
+.btn-lista {
+  --rosa: #ff2d78;
+  --fondo: #0d0612;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: var(--fondo);
+  color: var(--rosa);
+  border: 1px solid var(--rosa);
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.1s ease;
+}
+
+.btn-lista__icono {
+  width: 22px;
+  height: 22px;
+  fill: var(--rosa);
+  stroke: var(--rosa);
+  stroke-width: 1.5;
+  transition: fill 0.25s ease, transform 0.25s ease;
+}
+
+.btn-lista:hover {
+  box-shadow: 0 0 8px var(--rosa), 0 0 20px rgba(255, 45, 120, 0.45), inset 0 0 10px rgba(255, 45, 120, 0.25);
+}
+
+.btn-lista:hover .btn-lista__icono {
+  transform: scale(1.15);
+}
+
+.btn-lista:active {
+  transform: scale(0.97);
+}
+
+.btn-lista:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 4px;
+}
+
+/* Estado: ya agregada */
+.btn-lista[aria-pressed="true"] {
+  background: var(--rosa);
+  color: var(--fondo);
+}
+
+.btn-lista[aria-pressed="true"] .btn-lista__icono {
+  fill: var(--fondo);
+  stroke: var(--fondo);
+}
+
 @media (max-width: 900px) {
     .site-header {
         padding: 0 4vw;

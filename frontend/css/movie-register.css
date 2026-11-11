@@ -1,0 +1,158 @@
+/* =========================================================
+   VIDEOCLUB NOCTURNO — Registrar película
+   ========================================================= */
+
+:root {
+  --bg: #09050f;
+  --panel: #120a1d;
+  --ink: #f6efe6;
+  --muted: #a79bb8;
+  --pink: #ff2e88;
+  --cyan: #2ee6ff;
+  --yellow: #ffd23f;
+  --line: rgba(246, 239, 230, 0.16);
+  --display: "Bebas Neue", Impact, sans-serif;
+  --body: "Space Grotesk", system-ui, sans-serif;
+  --mono: "VT323", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.5; overflow-x: hidden; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+/* ---------- Efectos globales (CRT + grano) ---------- */
+.app { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
+.noise-filter { position: absolute; width: 0; height: 0; }
+.grain { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .09; mix-blend-mode: screen; filter: url(#noise); }
+.app::after {
+  content: ""; position: fixed; inset: 0; z-index: 49; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  animation: flicker 6s infinite steps(1);
+}
+@keyframes flicker { 0%, 94%, 100% { opacity: 1 } 95% { opacity: .85 } 97% { opacity: .95 } }
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  padding: .8rem clamp(1rem, 4vw, 3rem);
+  background: rgba(9, 5, 15, .92); backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--pink);
+}
+.logo { display: flex; flex-direction: column; line-height: .85; text-decoration: none; }
+.logo span { font-family: var(--mono); font-size: 1.05rem; letter-spacing: .3em; color: var(--muted); }
+.logo strong { font-family: var(--display); font-weight: 400; font-size: 2rem; letter-spacing: .06em; color: var(--pink); text-shadow: 0 0 12px rgba(255,46,136,.7); }
+.site-header nav { display: flex; gap: .3rem; flex-wrap: wrap; }
+.site-header nav a {
+  padding: .35rem .9rem; text-decoration: none;
+  font-family: var(--mono); font-size: 1.3rem; letter-spacing: .08em; color: var(--muted);
+  border-bottom: 2px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-header nav a:hover { color: var(--ink); }
+.site-header nav a.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+.logout-button {
+  font-family: var(--mono); font-size: 1.15rem; letter-spacing: .1em; text-decoration: none;
+  border: 1px solid var(--line); padding: .15rem .9rem; color: var(--muted);
+}
+.logout-button:hover { border-color: var(--pink); color: var(--ink); }
+
+main { flex: 1; }
+.eyebrow { font-family: var(--mono); font-size: 1.3rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
+
+.back-button {
+  display: inline-block; text-decoration: none; margin-bottom: 1.5rem;
+  font-family: var(--mono); font-size: 1.2rem; letter-spacing: .1em; color: var(--muted);
+}
+.back-button:hover { color: var(--cyan); }
+
+/* ---------- Pie ---------- */
+footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem); border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 1.15rem; letter-spacing: .1em; color: var(--muted);
+}
+footer b { color: var(--yellow); font-weight: 400; }
+.footer-logo { font-family: var(--display); font-size: 2.4rem; color: var(--pink); border: 2px solid var(--pink); padding: 0 .6rem; line-height: 1.2; }
+footer span { text-align: right; }
+
+@media (prefers-reduced-motion: reduce) { *, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- Página ---------- */
+.register-page { max-width: 1180px; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 3rem) 4rem; }
+.page-title { margin-bottom: 2rem; }
+.page-title h1 { font-family: var(--display); font-weight: 400; font-size: clamp(3.2rem, 8vw, 6rem); line-height: .9; color: var(--pink); text-shadow: 0 0 18px rgba(255,46,136,.45), 4px 4px 0 rgba(46,230,255,.5); margin: .2rem 0 .5rem; }
+.page-title p { color: var(--muted); }
+
+.register-layout { display: grid; grid-template-columns: 1.5fr .8fr; gap: 2.5rem; align-items: start; }
+
+/* ---------- Formulario ---------- */
+.movie-form {
+  background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--cyan);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.2rem;
+}
+.movie-form .full { grid-column: 1 / -1; }
+.movie-form label > span, .movie-form legend {
+  display: block; font-family: var(--mono); font-size: 1.15rem; letter-spacing: .08em; color: var(--muted); margin-bottom: .25rem;
+}
+.movie-form input[type="text"], .movie-form input[type="number"], .movie-form input[type="url"],
+.movie-form select, .movie-form textarea {
+  width: 100%; padding: .8rem 1rem; background: #0b0613;
+  border: 1px solid var(--line); border-bottom: 2px solid var(--cyan); border-radius: 0;
+  transition: border-color .15s, box-shadow .15s;
+}
+.movie-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--cyan) 50%), linear-gradient(135deg, var(--cyan) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 2.5rem; }
+.movie-form textarea { min-height: 120px; resize: vertical; }
+.movie-form ::placeholder { color: #5f5373; }
+.movie-form input:focus, .movie-form select:focus, .movie-form textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(46,230,255,.2); }
+.movie-form input:user-invalid, .movie-form textarea:user-invalid { border-bottom-color: var(--pink); }
+.hint { display: block; margin-top: .25rem; font-size: .8rem; color: #7d7090; }
+
+/* Selector de color (solo CSS, con radios) */
+.swatches { border: 0; }
+.swatch-row { display: flex; gap: .8rem; }
+.swatch-row label { cursor: pointer; }
+.swatch-row input { position: absolute; opacity: 0; pointer-events: none; }
+.swatch-row label > span { display: flex !important; align-items: center; gap: .5rem; margin: 0 !important; padding: .3rem .8rem .3rem .3rem; border: 1px solid var(--line); color: var(--ink) !important; font-family: var(--body) !important; font-size: .85rem !important; letter-spacing: 0 !important; }
+.swatch-row label > span::before { content: ""; width: 22px; height: 22px; background: var(--c); }
+.swatch-row input:checked + span { border-color: var(--c); box-shadow: 0 0 10px var(--c); }
+.swatch-row input:focus-visible + span { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.form-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: .5rem; }
+.save-button {
+  display: inline-flex; align-items: center; gap: 1rem; background: var(--yellow); color: #1a1200;
+  padding: .9rem 1.6rem; font-family: var(--display); font-size: 1.7rem; letter-spacing: .08em;
+  box-shadow: 5px 5px 0 var(--cyan); transition: transform .12s, box-shadow .12s;
+}
+.save-button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--cyan); }
+.save-button:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--cyan); }
+.save-button svg { width: 24px; height: 24px; }
+.cancel-link { color: var(--muted); font-size: .95rem; text-underline-offset: 3px; }
+.cancel-link:hover { color: var(--ink); }
+
+.auth-error { grid-column: 1 / -1; border: 1px solid var(--pink); background: rgba(255,46,136,.12); padding: .7rem 1rem; font-size: .92rem; }
+.auth-error[hidden] { display: none; }
+
+/* ---------- Funda VHS decorativa ---------- */
+.tape-preview { position: sticky; top: 6rem; transform: rotate(2deg); }
+.sleeve { border: 2px solid var(--ink); background: linear-gradient(160deg, #1b1030, #0b0613); box-shadow: 10px 10px 0 var(--pink); }
+.sleeve-art { aspect-ratio: 3 / 4; padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(120deg, rgba(255,46,136,.35), rgba(46,230,255,.2)), repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.03) 14px 28px); }
+.sleeve-art .year-stamp { align-self: flex-start; font-family: var(--mono); font-size: 1.3rem; background: var(--yellow); color: #1a1200; padding: 0 .6rem; }
+.sleeve-art h2 { font-family: var(--display); font-weight: 400; font-size: 3rem; line-height: .9; color: var(--ink); text-shadow: 3px 3px 0 var(--pink); }
+.sleeve-art p { font-family: var(--mono); font-size: 1.15rem; letter-spacing: .08em; color: var(--cyan); margin-top: .4rem; }
+.tape { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .5rem .9rem; background: #05020a; border-top: 2px solid var(--ink); font-family: var(--mono); font-size: 1rem; letter-spacing: .16em; color: var(--muted); }
+.tape b { font-weight: 400; }
+.reel { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--muted); background: radial-gradient(circle, var(--muted) 0 3px, transparent 4px); }
+
+@media (max-width: 900px) {
+  .register-layout { grid-template-columns: 1fr; }
+  .tape-preview { position: static; max-width: 320px; }
+}
+@media (max-width: 560px) { .movie-form { grid-template-columns: 1fr; } }

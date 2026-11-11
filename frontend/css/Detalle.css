@@ -203,6 +203,32 @@
   text-align: right;
   padding: 2px 24px 18px;
 }
+
+.detail-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 40px;
+}
+.detail-actions .favorite-button {
+  grid-column: 1 / -1;     /* guardar ocupa toda la fila de arriba */
+  margin-top: 0;
+}
+.action-button {
+  padding: 12px 14px;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  transition: 0.2s;
+}
+.action-edit { border: 1px solid var(--cyan); color: var(--cyan); }
+.action-edit:hover { background: var(--cyan); color: #130d15; }
+.action-delete { border: 1px solid var(--yellow); color: var(--yellow); }
+.action-delete:hover { background: var(--yellow); color: #130d15; }
+
 @media (max-width: 900px) {
   .detail-layout {
     grid-template-columns: 1fr;
