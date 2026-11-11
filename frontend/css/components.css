@@ -43,7 +43,7 @@ nav a{
     position:relative;
     color:#9f98a4;
     text-transform:uppercase;
-    font-size: clamp(12px, 3vw, 14px);
+    font-size: clamp(10px, 0.8vw + 8px, 12px);
     letter-spacing:.16em
 }
 nav a:hover,nav a.active{
@@ -175,7 +175,7 @@ footer>span{
     }
 
     nav a {
-        font-size: clamp(14px, 3vw, 15px);
+        font-size: clamp(10px, 0.8vw + 8px, 12px);
     }
 
     .crt-toggle {
@@ -202,7 +202,7 @@ footer>span{
     }
 
     nav a {
-        font-size: clamp(13px, 3.5vw, 16px);
+        font-size: clamp(10px, 0.8vw + 8px, 12px);
     }
 
     /* .crt-toggle ya está en 12px / 10px 14px por la regla de 900px,
@@ -229,7 +229,7 @@ footer>span{
 
 @media (min-width: 901px) and (max-width: 1300px) {
     nav a {
-        font-size: 19px;
+        font-size: clamp(10px, 0.8vw + 8px, 12px);
     }
 
     .crt-toggle {

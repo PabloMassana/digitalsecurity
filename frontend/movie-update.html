@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Videoclub Nocturno — Editar cinta</title>
   <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/movie-update.css" />
+  <link rel="stylesheet" href="css/movie-update.css" /><link rel="stylesheet" href="css/Catalogo.css" />
 </head>
 <body>
   <div class="app">
@@ -18,21 +18,20 @@
     <div class="grain"></div>
 
     <header class="site-header">
-      <a class="logo" href="home.html" aria-label="Ir al inicio">
+      <a class="logo" href="/" aria-label="Ir al inicio">
         <span>VIDEOCLUB</span>
         <strong>NOCTURNO</strong>
       </a>
       <nav aria-label="Navegación principal">
-        <a href="home.html">Inicio</a>
-        <a href="catalog.html" class="active" aria-current="page">Catálogo</a>
-        <a href="my-list.html">Mi lista (0)</a>
+        <a href="/">Inicio</a>
+        <a href="/catalogo" class="active" aria-current="page">Catálogo</a>
+        <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
       </nav>
-      <a class="logout-button" href="login.html">Salir</a>
     </header>
 
     <main>
       <section class="register-page">
-        <a class="back-button" href="movie-detail.html">← VOLVER A LA FICHA</a>
+        <a class="back-button" href="/detalle?id=1">← VOLVER A LA FICHA</a>
 
         <div class="page-title">
           <p class="eyebrow">Trastienda — Cinta Nº 001</p>
@@ -128,7 +127,7 @@
                 <span>Guardar cambios</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
               </button>
-              <a class="cancel-link" href="movie-detail.html">Cancelar</a>
+              <a class="cancel-link" href="/detalle?id=1">Cancelar</a>
             </div>
           </form>
 
@@ -155,7 +154,7 @@
     <footer>
       <div class="footer-logo">VN</div>
       <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
-      <span>© 1989—2025<br />ABIERTO TODAS LAS NOCHES</span>
+      <span>© 1989—2026<br />ABIERTO TODAS LAS NOCHES</span>
     </footer>
   </div>
 </body>

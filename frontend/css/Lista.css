@@ -1,10 +1,21 @@
 .list-page {
     display: flex;
     flex-direction: column;
+    font-family: "Special Elite", monospace;
 }
 
 .list-page .page-title {
     width: 100%;
+}
+
+.list-page .eyebrow,
+.list-page .page-title > p:last-child,
+.tape-empty p {
+    font-family: "Special Elite", monospace;
+}
+
+.list-page .page-title h1 {
+    font-family: "Bungee", sans-serif;
 }
 
 .tape-empty {
@@ -66,6 +77,7 @@
     background: var(--yellow);
     box-shadow: 5px 5px 0 var(--pink), 0 0 18px rgb(255 210 63 / 30%);
     color: var(--black);
+    font-family: "Special Elite", monospace;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.1em;

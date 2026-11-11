@@ -1,31 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Special+Elite&display=swap">
-    <link rel="stylesheet" href="css/variables.css"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/Detalle.css"><title>Videoclub Nocturno — Detalle</title>
-</head>
-<body>
-    <div class="app crt-on"><svg class="noise-filter" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg><div class="grain"></div>
-        <header class="site-header">
-            <a class="logo" href="/" aria-label="Ir al inicio"><span>VIDEOCLUB</span><strong>NOCTURNO</strong></a>
-            <nav aria-label="Navegación principal">
-                <a href="/">Inicio</a>
-                <a href="/catalogo">Catálogo</a>
-                <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
-            </nav>
-            <button class="crt-toggle on" onclick="toggleCRT(this)"><span class="toggle-light"></span> CRT ON</button>
-        </header>
-        <main class="detail-page">
-            <a class="back-button" href="/catalogo">← VOLVER AL PASILLO</a>
-            <div class="detail-layout" id="layout"></div>
-        </main>
-        <footer><div class="footer-logo">VN</div><p>POR FAVOR, SÉ AMABLE.<br><b>REBOBINA.</b></p><span>© 1989—2025<br>ABIERTO TODAS LAS NOCHES</span></footer>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Special+Elite&display=swap"
+    />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/Detalle.css" />
+    <title>Videoclub Nocturno — Detalle</title>
+  </head>
+  <body>
+    <div class="app crt-on">
+      <svg class="noise-filter" aria-hidden="true">
+        <filter id="noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency=".85"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </svg>
+      <div class="grain"></div>
+      <header class="site-header">
+        <a class="logo" href="/" aria-label="Ir al inicio"
+          ><span>VIDEOCLUB</span><strong>NOCTURNO</strong></a
+        >
+        <nav aria-label="Navegación principal">
+          <a href="/">Inicio</a>
+          <a href="/catalogo">Catálogo</a>
+          <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
+        </nav>
+        <!-- <button class="crt-toggle on" onclick="toggleCRT(this)"><span class="toggle-light"></span> CRT ON</button> -->
+      </header>
+      <main class="detail-page">
+        <a class="back-button" href="/catalogo">← VOLVER AL PASILLO</a>
+        <div class="detail-layout" id="layout"></div>
+      </main>
+      <footer>
+        <div class="footer-logo">VN</div>
+        <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
+        <span>© 1989—2026<br />ABIERTO TODAS LAS NOCHES</span>
+      </footer>
     </div>
     <script src="js/data.js"></script>
     <script src="js/detalle.js"></script>
     <script src="js/crt.js"></script>
-</body>
+  </body>
 </html>

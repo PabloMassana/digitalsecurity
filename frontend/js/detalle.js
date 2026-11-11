@@ -22,14 +22,6 @@ document.getElementById("layout").innerHTML = `
                   <button class="action-button action-edit" type="button" data-id="${m.id}" data-titulo="${m.title}">Modificar</button>
                   <button class="action-button action-delete" type="button" data-id="${m.id}" data-titulo="${m.title}">Eliminar</button>
                 </div>
-            </div>
-            <div class="ticket">
-                <div class="ticket-top"><span>VIDEOCLUB NOCTURNO</span><b>ADMIT ONE</b></div>
-                <div class="ticket-main"><small>SESIÓN ESPECIAL</small><h3>${m.title}</h3>
-                    <div><p>FECHA<br><b>HOY</b></p><p>HORA<br><b>23:45</b></p><p>SALA<br><b>03</b></p></div>
-                </div>
-                <div class="barcode">||| || |||| | ||| || ||||</div>
-                <small class="ticket-id">VN-${m.year}-${pad(m.id, 4)}</small>
             </div>`;
 const fav = document.getElementById("fav");
 function paintFav() {
