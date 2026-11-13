@@ -191,6 +191,33 @@ main {
   text-shadow: 0 0 8px var(--cyan);
 }
 
+.form-input[type="file"] {
+  padding: 0.55rem;
+}
+.form-input[type="file"]::file-selector-button {
+  margin-right: 1rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--yellow);
+  background: var(--yellow);
+  color: var(--bg);
+  font: 1rem var(--display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--pink);
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+.form-input[type="file"]::file-selector-button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--pink);
+}
+.form-input[type="file"]::file-selector-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--pink);
+}
+
 /* ---------- Pie ---------- */
 footer {
   display: flex;
