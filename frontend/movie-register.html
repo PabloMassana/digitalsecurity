@@ -32,6 +32,8 @@
           <a href="/">Inicio</a>
           <a href="/catalogo" class="active" aria-current="page">Catálogo</a>
           <a href="/lista">Mi lista (<span id="list-count">0</span>)</a>
+          <a href="/admin-usuario">Usuarios</a>
+          <a href="/login">Salir</a>
         </nav>
       </header>
 
@@ -48,7 +50,12 @@
           <div class="register-layout">
             <!-- Conecta con tu backend: cambia action y method según tu API.
                El Nº de cinta (id) lo asigna el servidor. -->
-            <form class="movie-form" action="/movies" method="post">
+            <form
+              class="movie-form"
+              action="/movies"
+              method="post"
+              enctype="multipart/form-data"
+            >
               <label class="full">
                 <span>Título</span>
                 <input
@@ -138,17 +145,15 @@
               </label>
 
               <label class="full">
-                <span>Imagen (URL)</span>
+                <span>Imagen</span>
                 <input
-                  type="url"
+                  class="form-input"
+                  type="file"
                   name="image"
-                  placeholder="https://..."
+                  accept="image/jpeg,image/png"
                   required
                 />
-                <small class="hint"
-                  >Si prefieres subir un archivo, cambia por type="file" y añade
-                  enctype="multipart/form-data" al formulario.</small
-                >
+                <small class="hint">Solo JPG o PNG.</small>
               </label>
 
               <fieldset class="full swatches">

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Videoclub Nocturno — Actualizar usuario</title>
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/actualizar-usuario.css" />
+    <link rel="stylesheet" href="css/Catalogo.css" />
+    <link rel="stylesheet" href="css/components.css" />
+  </head>
+  <body>
+    <div class="app crt-on">
+      <svg class="noise-filter" aria-hidden="true">
+        <filter id="noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency=".85"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </svg>
+      <div class="grain"></div>
+
+      <header class="site-header">
+        <a class="logo" href="/" aria-label="Ir al inicio">
+          <span>VIDEOCLUB</span>
+          <strong>NOCTURNO</strong>
+        </a>
+        <nav aria-label="Navegación principal">
+          <a href="/">Inicio</a>
+          <a href="/catalogo">Catálogo</a>
+          <a href="/lista">Mi lista (0)</a>
+          <a href="/admin-usuario" class="active" aria-current="page">Usuarios</a>
+          <a href="/login">Salir</a>
+        </nav>
+        <button class="crt-toggle on" type="button" aria-pressed="true">
+          <span class="toggle-light" aria-hidden="true"></span
+          ><span class="toggle-label">CRT ON</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="edit-user-page">
+          <a class="back-button" href="/usuarios">← VOLVER A USUARIOS</a>
+
+          <div class="edit-user-layout">
+            <div class="edit-user-aside">
+              <p class="eyebrow">Ficha de socio</p>
+              <h1>Actualizar<br /><span>usuario</span></h1>
+
+              <!-- Datos de ejemplo -->
+              <div class="member-card">
+                <div>
+                  <small>VIDEOCLUB NOCTURNO</small>
+                  <b>MEMBER CARD</b>
+                </div>
+                <span>MV</span>
+                <h2>Mara Vega</h2>
+                <p>VN-1 · VENDEDOR</p>
+                <div class="member-stripe"></div>
+              </div>
+
+              <p class="edit-help">
+                Modifica los datos necesarios y guarda la ficha para actualizar
+                la tabla de usuarios.
+              </p>
+            </div>
+
+            <!-- cambiar action según la API -->
+            <form class="edit-user-form" action="/users/1" method="post">
+              <input type="hidden" name="_method" value="PUT" />
+              <input type="hidden" name="id" value="1" />
+
+              <div class="form-section-heading">
+                <span>01</span>
+                <div>
+                  <h2>Datos de acceso</h2>
+                  <p>Información principal de la cuenta.</p>
+                </div>
+              </div>
+
+              <label>
+                <span>Nombre completo *</span>
+                <input
+                  type="text"
+                  name="name"
+                  value="Mara Vega"
+                  autocomplete="name"
+                  required
+                />
+              </label>
+
+              <label>
+                <span>Correo electrónico *</span>
+                <input
+                  type="email"
+                  name="email"
+                  value="mara@nocturno.club"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+
+              <!-- Por seguridad el backend nunca debe enviar la contraseña actual -->
+              <label>
+                <span>Nueva contraseña</span>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Déjala vacía para mantener la actual"
+                  autocomplete="new-password"
+                  minlength="6"
+                />
+              </label>
+
+              <div class="form-section-heading edit-role-heading">
+                <span>02</span>
+                <div>
+                  <h2>Rol y estado</h2>
+                  <p>Permisos del usuario en el videoclub.</p>
+                </div>
+              </div>
+
+              <fieldset class="role-options">
+                <legend>Rol del usuario *</legend>
+                <label>
+                  <input type="radio" name="role" value="cliente" required />
+                  <span>
+                    <b>Cliente</b>
+                    <small>Explora el catálogo y guarda favoritos.</small>
+                  </span>
+                </label>
+                <label>
+                  <input type="radio" name="role" value="vendedor" checked />
+                  <span>
+                    <b>Vendedor</b>
+                    <small>Gestiona películas y usuarios.</small>
+                  </span>
+                </label>
+              </fieldset>
+
+              <label class="user-active-toggle">
+                <input type="checkbox" name="active" value="1" checked />
+                <span>
+                  <b>Cuenta activa</b>
+                  <small>Permite que el usuario inicie sesión.</small>
+                </span>
+              </label>
+
+              <div class="edit-form-actions">
+                <a href="/usuarios">Cancelar</a>
+                <button type="submit">
+                  Guardar cambios
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-logo">VN</div>
+        <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
+        <span>© 1989—2026<br />ABIERTO TODAS LAS NOCHES</span>
+      </footer>
+    </div>
+    <script src="js/crt.js"></script>
+  </body>
+</html>
