@@ -1,0 +1,274 @@
+.detail-page {
+  max-width: 1480px;
+  min-height: calc(100vh - 94px);
+  margin: auto;
+  padding: 55px 6vw 120px;
+}
+.back-button {
+  display: inline-block;
+  color: #99909a;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  margin-bottom: 28px;
+}
+.back-button:hover {
+  color: var(--cyan);
+}
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) 1fr;
+  gap: 6vw;
+  position: relative;
+}
+.detail-poster {
+  min-height: 650px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding: 35px;
+  background-size: cover;
+  background-position: center;
+  border: 10px solid #17131d;
+  box-shadow:
+    10px 12px 0 #050406,
+    0 0 0 1px #4b414e;
+}
+.detail-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(8, 5, 12, 0.97), transparent 60%);
+}
+.detail-poster > div {
+  position: relative;
+  z-index: 1;
+}
+.detail-poster small {
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+}
+.detail-poster h1 {
+  margin: 8px 0;
+  font: clamp(40px, 5vw, 76px)/0.95 "Bungee";
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--pink);
+}
+.detail-poster p {
+  color: var(--yellow);
+}
+.poster-rating {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 20px;
+  color: #111;
+  background: var(--yellow);
+  font-weight: bold;
+  padding: 8px;
+}
+.detail-content {
+  padding-top: 55px;
+}
+.detail-content h2 {
+  font: clamp(42px, 5vw, 74px)/1 "Bungee";
+  text-transform: uppercase;
+  margin: 17px 0 10px;
+  color: var(--pink);
+  text-shadow: 3px 3px 0 #601238;
+}
+.detail-tagline {
+  color: var(--yellow);
+  font-size: 18px;
+}
+.detail-content h3 {
+  margin-top: 34px;
+  color: var(--cyan);
+  font: 13px "Bungee";
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.synopsis {
+  max-width: 680px;
+  color: #bab1b9;
+  line-height: 1.8;
+}
+.cast {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cast span {
+  border: 1px solid #423a45;
+  padding: 8px 12px;
+  color: #bbb3ba;
+  font-size: 11px;
+}
+.favorite-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 14px 18px;
+  border: 1px solid var(--pink);
+  background: transparent;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+}
+.favorite-button svg {
+  width: 18px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+.favorite-button.saved {
+  background: var(--pink);
+  color: #130d15;
+}
+
+.detail-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 40px;
+}
+.detail-actions .favorite-button {
+  grid-column: 1 / -1; /* guardar ocupa toda la fila de arriba */
+  margin-top: 0;
+}
+.action-button {
+  padding: 12px 14px;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  transition: 0.2s;
+}
+.action-edit {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+}
+.action-edit:hover {
+  background: var(--cyan);
+  color: #130d15;
+}
+.action-delete {
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+}
+.action-delete:hover {
+  background: var(--yellow);
+  color: #130d15;
+}
+
+.ticket {
+  position: absolute;
+  width: 370px;
+  right: 2%;
+  bottom: -150px;
+  color: #211820;
+  background: var(--paper);
+  transform: rotate(-3deg);
+  box-shadow: 8px 9px 0 var(--pink);
+}
+.ticket::before,
+.ticket::after {
+  content: "";
+  left: -10px;
+  right: -10px;
+  height: 18px;
+  background: radial-gradient(
+      circle at 9px 0,
+      transparent 8px,
+      var(--paper) 9px
+    )
+    0 0/20px 18px repeat-x;
+}
+.ticket::before {
+  top: -9px;
+  transform: rotate(180deg);
+}
+.ticket::after {
+  bottom: -9px;
+}
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px dashed #7d6e77;
+  padding: 22px 24px 15px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+.ticket-top b {
+  color: #d51e71;
+}
+.ticket-main {
+  padding: 20px 24px 12px;
+}
+.ticket-main small {
+  color: #786b74;
+}
+.ticket-main h3 {
+  margin: 5px 0 18px;
+  font: 20px "Bungee";
+  text-transform: uppercase;
+}
+.ticket-main > div {
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-main p {
+  color: #746771;
+  font-size: 9px;
+}
+.ticket-main p b {
+  color: #211820;
+  font-size: 13px;
+}
+.barcode {
+  font-family: monospace;
+  font-size: 22px;
+  padding: 0 24px;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ticket-id {
+  display: block;
+  text-align: right;
+  padding: 2px 24px 18px;
+}
+
+@media (max-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .detail-poster {
+    min-height: 600px;
+  }
+  .detail-content {
+    padding: 10px 0 180px;
+  }
+  .ticket {
+    right: 6%;
+    bottom: -60px;
+  }
+}
+@media (max-width: 600px) {
+  .detail-page {
+    padding: 35px 5vw 120px;
+  }
+  .detail-poster {
+    min-height: 490px;
+    padding: 24px;
+  }
+  .detail-content h2 {
+    font-size: 42px;
+  }
+  .ticket {
+    width: 90%;
+    right: 5%;
+  }
+}

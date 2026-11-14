@@ -1,0 +1,259 @@
+.hero{
+    min-height:calc(100vh - 94px);
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:9vw 9vw 12vw
+}
+.hero-photo{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,rgba(13,11,20,.94) 6%,rgba(13,11,20,.7) 47%,rgba(13,11,20,.15) 72%),linear-gradient(0deg,var(--black),transparent 35%),url("https://images.unsplash.com/photo-1721264625998-fb0a8feb384c?auto=format&fit=crop&w=1800&q=85") center 45%/cover;
+    filter:saturate(.8) contrast(1.15)
+}
+.hero-copy{
+    position:relative;
+    z-index:2;
+    width:min(760px,70vw)
+}
+.hero h1{
+    font:clamp(52px,7.6vw,122px)/.86 "Bungee";
+    margin:25px 0 30px;
+    text-transform:uppercase;
+    letter-spacing:-.04em
+}
+.hero h1 span{
+    display:block;
+    color:transparent;
+    -webkit-text-stroke:2px var(--cyan);
+    text-shadow:0 0 17px rgba(46,230,255,.7)
+}
+.hero h1 strong{
+    display:block;
+    color:var(--pink);
+    font-weight:400;
+    text-shadow:4px 4px 0 #7e0a42,0 0 14px var(--pink),0 0 42px rgba(255,46,136,.8);
+    animation:flicker 6s infinite
+}
+@keyframes flicker{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.35}}
+.hero-text{
+    max-width:550px;
+    color:#d1c8ce;
+    font-size:17px;
+    line-height:1.75
+}
+.open-sign{
+    position:absolute;
+    z-index:2;
+    right:6vw;
+    top:13%;
+    transform:rotate(4deg);
+    padding:14px 24px;
+    text-align:center;
+    border:3px solid var(--cyan);
+    box-shadow:0 0 10px var(--cyan),inset 0 0 10px var(--cyan);
+    background:rgba(13,11,20,.76)
+}
+.open-sign span{
+    display:block;
+    font:28px "Bungee";
+    color:var(--pink);
+    text-shadow:0 0 10px var(--pink)
+}
+.open-sign small{
+    color:var(--cyan);
+    letter-spacing:.2em
+}
+.scroll-note{
+    position:absolute;
+    z-index:2;
+    bottom:34px;
+    right:7vw;
+    color:#817985;
+    font-size:9px;
+    letter-spacing:.25em;
+    writing-mode:vertical-rl
+}
+.scroll-note span{
+    color:var(--pink);
+    font-size:22px;
+    margin-top:12px
+}
+
+.weekly{
+    position:relative;
+    padding:100px 7vw 130px;
+    max-width:1480px;
+    margin:auto
+}
+.weekly::before{
+    content:"NEW RELEASES";
+    position:absolute;
+    color:rgba(255,255,255,.018);
+    font:10vw "Bungee";
+    top:30px;
+    left:2%;
+    white-space:nowrap
+}
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:42px
+}
+.section-heading h2{
+    margin:6px 0 0;
+    font:clamp(35px,4.2vw,64px) "Bungee";
+    text-transform:uppercase;
+    text-shadow:3px 3px 0 #5f1641
+}
+.carousel-controls{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    color:#8d858e;
+    font-size:12px
+}
+.carousel-controls button{
+    width:43px;
+    height:43px;
+    border:1px solid #433b48;
+    color:#fff;
+    background:#19151f;
+    padding:12px
+}
+.carousel-controls button:first-child{
+    transform:rotate(180deg)
+}
+.carousel-controls svg,.text-button svg{
+    width:100%;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2
+}
+.featured-vhs{
+    min-height:420px;
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    position:relative;
+    border:1px solid #3d3543;
+    background:#16121c;
+    box-shadow:12px 14px 0 #07060b,0 0 30px rgba(255,46,136,.1)
+}
+.vhs-art{
+    min-height:420px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    filter:saturate(.7) contrast(1.12)
+}
+.vhs-art::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,transparent 60%,#16121c)
+}
+.vhs-art span{
+    position:absolute;
+    left:20px;
+    top:20px;
+    background:var(--yellow);
+    color:#111;
+    padding:5px 9px;
+    font-weight:bold
+}
+.vhs-body{
+    padding:58px 8vw 45px 55px;
+    position:relative
+}
+.catalog-number{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:.2em
+}
+.vhs-body h3{
+    font:clamp(37px,5vw,72px)/1 "Bungee";
+    color:var(--pink);
+    margin:14px 0 0;
+    text-transform:uppercase;
+    text-shadow:3px 3px 0 #601238
+}
+.tagline{
+    color:var(--yellow);
+    font-size:18px;
+    margin:6px 0 20px
+}
+.vhs-body>p:last-of-type{
+    color:#aaa1aa;
+    line-height:1.65;
+    max-width:660px
+}
+.text-button{
+    display:flex;
+    width:max-content;
+    align-items:center;
+    gap:10px;
+    color:var(--cyan);
+    border-bottom:1px solid var(--cyan);
+    padding:5px 0;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:11px
+}
+.text-button svg{
+    width:15px
+}
+.rewind-sticker{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    position:absolute;
+    bottom:-24px;
+    right:3%;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:var(--yellow);
+    color:#19131a;
+    transform:rotate(-10deg);
+    padding:18px;
+    font-size:10px;
+    box-shadow:3px 5px 0 var(--pink)
+}
+.rewind-sticker svg{
+    width:27px;
+    fill:currentColor
+}
+.rewind-sticker b{
+    font:11px "Bungee"
+}
+@media(max-width:900px){
+    .hero{padding-left:6vw}
+    .hero-copy{width:88vw}
+    .open-sign{display:none}
+    .featured-vhs{grid-template-columns:1fr}
+    .vhs-art{min-height:330px}
+    .vhs-body{padding:40px}
+    .rewind-sticker{right:0}
+}
+@media(max-width:600px){
+    .hero{
+        min-height:680px;
+        padding:80px 6vw
+    }
+    .hero h1{font-size:46px}
+    .hero h1 span{-webkit-text-stroke-width:1px}
+    .hero-text{font-size:14px}
+    .scroll-note{display:none}
+    .weekly{padding:75px 5vw 90px}
+    .section-heading{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:25px
+    }
+    .section-heading h2{font-size:34px}
+    .vhs-art{min-height:250px}
+    .vhs-body{padding:34px 23px 55px}
+    .vhs-body h3{font-size:38px}
+    .featured-vhs{min-height:auto}
+}
