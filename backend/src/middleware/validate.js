@@ -2,9 +2,13 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const USERNAME_REGEX = /^[a-zA-Z0-9_.-]{3,30}$/;
 const MAX_BCRYPT_BYTES = 72;
 const ALLOWED_MOVIE_FIELDS = new Set([
-  "title", "year", "genre", "description", "price", "stock", "image",
-  "runtime", "rating", "tagline", "synopsis", "cast"
+  "title", "year", "genre", "description", "image",
+  "runtime", "rating", "tagline", "synopsis", "cast", "color"
 ]);
+// Campos que los formularios HTML mandan solos y que el servidor ignora.
+const IGNORED_FORM_FIELDS = new Set(["_method", "id"]);
+const VALID_ROLES = ["buyer", "seller", "admin"];
+const COLOR_REGEX = /^#[0-9a-fA-F]{6}$/;
 
 function isObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -82,12 +86,12 @@ function validateMovie({ partial = false } = {}) {
     const movie = {};
     const has = (key) => Object.prototype.hasOwnProperty.call(body, key);
 
-    const unknownFields = Object.keys(body).filter((key) => !ALLOWED_MOVIE_FIELDS.has(key));
+    const unknownFields = Object.keys(body).filter((key) => !ALLOWED_MOVIE_FIELDS.has(key) && !IGNORED_FORM_FIELDS.has(key));
     if (unknownFields.length) {
       details.push(`Campos no permitidos: ${unknownFields.join(", ")}.`);
     }
 
-    const requiredFields = ["title", "year", "genre", "price", "stock"];
+    const requiredFields = ["title", "year", "genre"];
     if (!partial) {
       for (const field of requiredFields) {
         if (body[field] === undefined || String(body[field]).trim() === "") {
@@ -122,20 +126,6 @@ function validateMovie({ partial = false } = {}) {
       } else movie.description = body.description.trim();
     }
 
-    if (has("price")) {
-      const price = Number(body.price);
-      if (!Number.isFinite(price) || price < 0 || price > 1000000) {
-        details.push("price debe ser un numero entre 0 y 1000000.");
-      } else movie.price = price;
-    }
-
-    if (has("stock")) {
-      const stock = Number(body.stock);
-      if (!Number.isSafeInteger(stock) || stock < 0 || stock > 1000000) {
-        details.push("stock debe ser un entero entre 0 y 1000000.");
-      } else movie.stock = stock;
-    }
-
     if (has("image")) {
       if (typeof body.image !== "string" || body.image.length > 1000) {
         details.push("image debe ser una URL de texto y no superar 1000 caracteres.");
@@ -152,6 +142,12 @@ function validateMovie({ partial = false } = {}) {
       } else {
         movie.image = "";
       }
+    }
+
+    if (has("color")) {
+      if (typeof body.color !== "string" || !COLOR_REGEX.test(body.color)) {
+        details.push("color debe ser un color hexadecimal como #ff2e88.");
+      } else movie.color = body.color.toLowerCase();
     }
 
     for (const [field, maxLength] of [["runtime", 30], ["rating", 12], ["tagline", 180], ["synopsis", 3000]]) {
@@ -193,4 +189,56 @@ function validateMovie({ partial = false } = {}) {
   };
 }
 
-module.exports = { validateRegister, validateLogin, validateMovie };
+function validateUser({ partial = false } = {}) {
+  return (req, res, next) => {
+    const body = req.body || {};
+    if (!isObject(body)) return validationError(res, ["El cuerpo debe ser un objeto JSON valido."]);
+
+    const details = [];
+    const user = {};
+    const has = (key) => Object.prototype.hasOwnProperty.call(body, key);
+
+    const allowed = new Set(["username", "email", "password", "role"]);
+    const unknown = Object.keys(body).filter((key) => !allowed.has(key) && !IGNORED_FORM_FIELDS.has(key));
+    if (unknown.length) details.push(`Campos no permitidos: ${unknown.join(", ")}.`);
+
+    if (!partial) {
+      for (const field of ["username", "email", "password"]) {
+        if (!has(field)) details.push(`${field} es obligatorio.`);
+      }
+    }
+
+    if (has("username")) {
+      const username = typeof body.username === "string" ? body.username.trim().toLowerCase() : "";
+      if (!USERNAME_REGEX.test(username)) details.push("username debe tener entre 3 y 30 caracteres (letras, numeros, punto, guion o guion bajo).");
+      else user.username = username;
+    }
+    if (has("email")) {
+      const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+      if (!EMAIL_REGEX.test(email) || email.length > 254) details.push("email debe ser una direccion de correo valida.");
+      else user.email = email;
+    }
+    // En edicion, una contrasena vacia significa "no cambiarla".
+    if (has("password") && !(partial && body.password === "")) {
+      const password = typeof body.password === "string" ? body.password : "";
+      if ([...password].length < 15) details.push("password debe tener al menos 15 caracteres.");
+      else if (Buffer.byteLength(password, "utf8") > MAX_BCRYPT_BYTES) details.push("password no puede superar 72 bytes UTF-8.");
+      else user.password = password;
+    }
+    if (has("role")) {
+      if (typeof body.role !== "string" || !VALID_ROLES.includes(body.role)) {
+        details.push("role debe ser buyer, seller o admin.");
+      } else user.role = body.role;
+    }
+
+    if (partial && Object.keys(user).length === 0 && details.length === 0) {
+      details.push("Debes enviar al menos un campo para actualizar.");
+    }
+    if (details.length) return validationError(res, details);
+
+    req.validatedUser = user;
+    next();
+  };
+}
+
+module.exports = { validateRegister, validateLogin, validateMovie, validateUser };
