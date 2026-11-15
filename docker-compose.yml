@@ -29,9 +29,16 @@ services:
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       ALLOWED_ORIGIN: ${ALLOWED_ORIGIN}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1h}
+      UPLOAD_DIR: /app/uploads
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - uploads_data:/app/uploads
     ports:
       - "5000:5000"
 
 volumes:
   mongo_data:
-
+  uploads_data:
