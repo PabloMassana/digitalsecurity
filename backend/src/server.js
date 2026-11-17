@@ -1,14 +1,14 @@
 const path = require("node:path");
+const { connect, closeConnection, getDb } = require("./db.js");
+const { seedUsers, seedMovies } = require("./seed.js");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const express = require("express");
 const helmet = require("helmet");
 const { rateLimit } = require("express-rate-limit");
-const { connect, closeConnection } = require("./db.js");
 const authRoutes = require("./routes/auth.js");
 const movieRoutes = require("./routes/movies.js");
 const adminRoutes = require("./routes/admin.js");
-const seedAdmin = require("./seedAdmin.js");
 const { UPLOAD_DIR } = require("./middleware/upload.js");
 const errorHandler = require("./middleware/errorHandler.js");
 
@@ -97,9 +97,12 @@ process.once("SIGTERM", () => shutdown("SIGTERM"));
 try {
   validateConfiguration();
   connect()
-    .then(() => seedAdmin())
-    .then(() => {
+    .then(async () => {
       console.log("Base de datos conectada correctamente.");
+      const db = getDb();
+      await seedUsers(db);
+      await seedMovies(db);
+      console.log("Seed ejecutado correctamente.");
       httpServer = app.listen(PORT, "0.0.0.0", () => {
         console.log(`Backend escuchando en el puerto ${PORT}.`);
       });
