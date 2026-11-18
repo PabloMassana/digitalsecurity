@@ -8,6 +8,8 @@ RUN npm ci --omit=dev
 
 COPY src ./src
 
+RUN mkdir -p /app/uploads && chown node:node /app/uploads
+
 # Sin privilegios de root (heardening)
 USER node
 
