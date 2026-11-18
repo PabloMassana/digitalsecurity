@@ -32,9 +32,14 @@ services:
       SEED_BUYER_PASSWORD: ${SEED_BUYER_PASSWORD}
       SEED_SELLER_PASSWORD: ${SEED_SELLER_PASSWORD}
       SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1h}
+      UPLOAD_DIR: /app/uploads
+
+    volumes:
+      - uploads_data:/app/uploads
     ports:
       - "5000:5000"
 
 volumes:
   mongo_data:
-
+  uploads_data:

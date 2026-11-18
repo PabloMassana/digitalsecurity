@@ -1,11 +1,15 @@
 const path = require("node:path");
+const { connect, closeConnection, getDb } = require("./db.js");
+const { seedUsers, seedMovies } = require("./seed.js");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const express = require("express");
 const helmet = require("helmet");
 const { rateLimit } = require("express-rate-limit");
-const { connect, closeConnection } = require("./db.js");
 const authRoutes = require("./routes/auth.js");
+const movieRoutes = require("./routes/movies.js");
+const adminRoutes = require("./routes/admin.js");
+const { UPLOAD_DIR } = require("./middleware/upload.js");
 const errorHandler = require("./middleware/errorHandler.js");
 
 const app = express();
@@ -54,6 +58,15 @@ app.use("/api", apiLimiter);
 
 app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
 app.use("/api/auth", authRoutes);
+app.use("/api/movies", movieRoutes);
+app.use("/api/admin", adminRoutes);
+
+// Imagenes subidas por los vendedores. Helmet pone CORP same-origin; las imagenes
+// deben poder cargarse desde el frontend (otro puerto), por eso se relaja solo aqui.
+app.use("/uploads", (req, res, next) => {
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+  next();
+}, express.static(UPLOAD_DIR, { index: false, dotfiles: "deny", fallthrough: false }));
 
 app.use((req, res) => res.status(404).json({ error: "Ruta no encontrada." }));
 app.use(errorHandler);
@@ -84,8 +97,12 @@ process.once("SIGTERM", () => shutdown("SIGTERM"));
 try {
   validateConfiguration();
   connect()
-    .then(() => {
+    .then(async () => {
       console.log("Base de datos conectada correctamente.");
+      const db = getDb();
+      await seedUsers(db);
+      await seedMovies(db);
+      console.log("Seed ejecutado correctamente.");
       httpServer = app.listen(PORT, "0.0.0.0", () => {
         console.log(`Backend escuchando en el puerto ${PORT}.`);
       });

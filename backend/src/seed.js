@@ -132,7 +132,6 @@ if (!seller){
 
 }
 
-
 async function main(){
     await connect();
     const db = getDb();
@@ -142,4 +141,8 @@ async function main(){
     console.log("Seed de usuarios y películas listo");
 }
 
-main().catch(err => {console.error(err); process.exit(1); });
+module.exports = { seedUsers, seedMovies };
+
+if (require.main === module) {
+    main().catch(err => { console.error(err); process.exit(1); });
+}
