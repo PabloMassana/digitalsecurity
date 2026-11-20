@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Videoclub Nocturno — Usuarios</title>
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/AdminUsuarios.css" />
+    <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+    <div class="app crt-on">
+        <svg class="noise-filter" aria-hidden="true">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+        </svg>
+        <div class="grain"></div>
+
+        <header class="site-header">
+        <a class="logo" href="home.html" aria-label="Ir al inicio">
+            <span>VIDEOCLUB</span>
+            <strong>NOCTURNO</strong>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="/">Inicio</a>
+            <a href="/catalogo">Catálogo</a>
+            <a href="/lista">Mi lista (0)</a>
+            <a href="/admin-usuario" class="active" aria-current="page">Usuarios</a>
+            <a href="/login">Salir</a>
+        </nav>
+        <button class="crt-toggle on" type="button" aria-pressed="true">
+            <span class="toggle-light" aria-hidden="true"></span
+            ><span class="toggle-label">CRT ON</span>
+            </button>
+        </header>
+
+        <main>
+        <section class="users-page">
+            <div class="users-heading">
+            <div>
+                <p class="eyebrow">Administración — Archivo de socios</p>
+                <h1>Usuarios</h1>
+                <p>Consulta, actualiza o elimina los perfiles registrados en el videoclub.</p>
+            </div>
+            <div class="users-total">
+                <strong>05</strong>
+                <span>USUARIOS<br />EN ARCHIVO</span>
+            </div>
+            </div>
+
+            <!-- Búsqueda y filtro por rol: formulario GET (el backend filtra con ?q= y ?role=).
+                Al rol activo ponle la clase "active". -->
+            <form class="users-toolbar" action="users.html" method="get">
+            <label class="search-box">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
+                <input type="search" name="q" placeholder="Buscar por nombre o correo..." />
+            </label>
+            <div class="role-filter">
+                <span>FILTRAR ROL</span>
+                <button type="submit" name="role" value="todos" class="active">todos</button>
+                <button type="submit" name="role" value="cliente">cliente</button>
+                <button type="submit" name="role" value="vendedor">vendedor</button>
+            </div>
+            </form>
+
+            <div class="users-table-wrap" id="tabla-usuarios">
+            <table class="users-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>registro</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><span class="user-id">VN-1</span></td>
+                <td>
+                    <div class="user-identity">
+                    <span>MV</span>
+                    <strong>Mara Vega</strong>
+                    </div>
+                </td>
+                <td class="user-email">mara@nocturno.club</td>
+                <td><span class="role-badge vendedor">vendedor</span></td>
+                <td>12/03/2024</td>
+                <td><span class="user-status active"><i></i>Activo</span></td>
+                <td>
+                    <div class="user-actions">
+                    <a class="edit-action" href="edit-user.html?id=1">Actualizar</a>
+                    <a class="delete-action" href="#delete-1">Eliminar</a>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td><span class="user-id">VN-2</span></td>
+                <td>
+                    <div class="user-identity">
+                    <span>DC</span>
+                    <strong>Dante Cruz</strong>
+                    </div>
+                </td>
+                <td class="user-email">dante@correo.com</td>
+                <td><span class="role-badge cliente">cliente</span></td>
+                <td>02/05/2024</td>
+                <td><span class="user-status active"><i></i>Activo</span></td>
+                <td>
+                    <div class="user-actions">
+                    <a class="edit-action" href="edit-user.html?id=2">Actualizar</a>
+                    <a class="delete-action" href="#delete-2">Eliminar</a>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td><span class="user-id">VN-3</span></td>
+                <td>
+                    <div class="user-identity">
+                    <span>IM</span>
+                    <strong>Iris Moon</strong>
+                    </div>
+                </td>
+                <td class="user-email">iris.moon@correo.com</td>
+                <td><span class="role-badge cliente">cliente</span></td>
+                <td>19/08/2024</td>
+                <td><span class="user-status active"><i></i>Activo</span></td>
+                <td>
+                    <div class="user-actions">
+                    <a class="edit-action" href="edit-user.html?id=3">Actualizar</a>
+                    <a class="delete-action" href="#delete-3">Eliminar</a>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td><span class="user-id">VN-4</span></td>
+                <td>
+                    <div class="user-identity">
+                    <span>LS</span>
+                    <strong>Leo Sparks</strong>
+                    </div>
+                </td>
+                <td class="user-email">leo@correo.com</td>
+                <td><span class="role-badge cliente">cliente</span></td>
+                <td>07/11/2024</td>
+                <td><span class="user-status"><i></i>Inactivo</span></td>
+                <td>
+                    <div class="user-actions">
+                    <a class="edit-action" href="edit-user.html?id=4">Actualizar</a>
+                    <a class="delete-action" href="#delete-4">Eliminar</a>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td><span class="user-id">VN-5</span></td>
+                <td>
+                    <div class="user-identity">
+                    <span>NP</span>
+                    <strong>Nora Pixel</strong>
+                    </div>
+                </td>
+                <td class="user-email">nora@nocturno.club</td>
+                <td><span class="role-badge vendedor">vendedor</span></td>
+                <td>30/01/2025</td>
+                <td><span class="user-status active"><i></i>Activo</span></td>
+                <td>
+                    <div class="user-actions">
+                    <a class="edit-action" href="edit-user.html?id=5">Actualizar</a>
+                    <a class="delete-action" href="#delete-5">Eliminar</a>
+                    </div>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- Estado vacío: el backend lo muestra cuando la búsqueda no da resultados
+            <div class="users-empty">
+                <span>NO SIGNAL</span>
+                <p>No hay usuarios que coincidan con la búsqueda.</p>
+            </div>
+            -->
+            </div>
+            <p class="table-footnote">Mostrando 5 de 5 usuarios</p>
+
+        <!-- Diálogo de confirmación del usuario 1 (se abre con :target, sin JavaScript) -->
+        <div class="delete-overlay" id="delete-1" role="dialog" aria-modal="true" aria-labelledby="delete-title-1">
+            <div class="delete-dialog">
+            <div class="delete-warning">!</div>
+            <p class="eyebrow">Operación irreversible</p>
+            <h2 id="delete-title-1">Eliminar usuario</h2>
+            <p>¿Seguro que quieres retirar a <strong>Mara Vega</strong> del archivo?</p>
+            <div class="delete-actions">
+                <a href="#tabla-usuarios">Cancelar</a>
+                <form action="/users/1" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="confirm-delete" type="submit">Sí, eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Diálogo de confirmación del usuario 2 (se abre con :target, sin JavaScript) -->
+        <div class="delete-overlay" id="delete-2" role="dialog" aria-modal="true" aria-labelledby="delete-title-2">
+            <div class="delete-dialog">
+            <div class="delete-warning">!</div>
+            <p class="eyebrow">Operación irreversible</p>
+            <h2 id="delete-title-2">Eliminar usuario</h2>
+            <p>¿Seguro que quieres retirar a <strong>Dante Cruz</strong> del archivo?</p>
+            <div class="delete-actions">
+                <a href="#tabla-usuarios">Cancelar</a>
+                <form action="/users/2" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="confirm-delete" type="submit">Sí, eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Diálogo de confirmación del usuario 3 (se abre con :target, sin JavaScript) -->
+        <div class="delete-overlay" id="delete-3" role="dialog" aria-modal="true" aria-labelledby="delete-title-3">
+            <div class="delete-dialog">
+            <div class="delete-warning">!</div>
+            <p class="eyebrow">Operación irreversible</p>
+            <h2 id="delete-title-3">Eliminar usuario</h2>
+            <p>¿Seguro que quieres retirar a <strong>Iris Moon</strong> del archivo?</p>
+            <div class="delete-actions">
+                <a href="#tabla-usuarios">Cancelar</a>
+                <form action="/users/3" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="confirm-delete" type="submit">Sí, eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Diálogo de confirmación del usuario 4 (se abre con :target, sin JavaScript) -->
+        <div class="delete-overlay" id="delete-4" role="dialog" aria-modal="true" aria-labelledby="delete-title-4">
+            <div class="delete-dialog">
+            <div class="delete-warning">!</div>
+            <p class="eyebrow">Operación irreversible</p>
+            <h2 id="delete-title-4">Eliminar usuario</h2>
+            <p>¿Seguro que quieres retirar a <strong>Leo Sparks</strong> del archivo?</p>
+            <div class="delete-actions">
+                <a href="#tabla-usuarios">Cancelar</a>
+                <form action="/users/4" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="confirm-delete" type="submit">Sí, eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Diálogo de confirmación del usuario 5 (se abre con :target, sin JavaScript) -->
+        <div class="delete-overlay" id="delete-5" role="dialog" aria-modal="true" aria-labelledby="delete-title-5">
+            <div class="delete-dialog">
+            <div class="delete-warning">!</div>
+            <p class="eyebrow">Operación irreversible</p>
+            <h2 id="delete-title-5">Eliminar usuario</h2>
+            <p>¿Seguro que quieres retirar a <strong>Nora Pixel</strong> del archivo?</p>
+            <div class="delete-actions">
+                <a href="#tabla-usuarios">Cancelar</a>
+                <form action="/users/5" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="confirm-delete" type="submit">Sí, eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </section>
+        </main>
+
+        <footer>
+        <div class="footer-logo">VN</div>
+        <p>POR FAVOR, SÉ AMABLE.<br /><b>REBOBINA.</b></p>
+        <span>© 1989—2025<br />ABIERTO TODAS LAS NOCHES</span>
+        </footer>
+    </div>
+    <script src="js/crt.js"></script>
+</body>
+</html>
