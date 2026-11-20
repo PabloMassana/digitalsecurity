@@ -4,7 +4,6 @@ const { seedUsers, seedMovies } = require("./seed.js");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const express = require("express");
-const helmet = require("helmet");
 const { rateLimit } = require("express-rate-limit");
 const authRoutes = require("./routes/auth.js");
 const movieRoutes = require("./routes/movies.js");
@@ -26,7 +25,6 @@ function validateConfiguration() {
 }
 
 app.disable("x-powered-by");
-app.use(helmet());
 app.use(express.json({ limit: "64kb", strict: true }));
 app.use(express.urlencoded({ extended: false, limit: "64kb", parameterLimit: 20 }));
 
